@@ -54,7 +54,8 @@ public function update(Request $request, $id)
     $request->validate([
         'titre' => 'required|string|max:255',
         'categorie' => 'required|string|max:255',
-        'prix' => 'required|numeric'
+        'prix' => 'required|numeric',
+        'content' => 'required|string|max:255'
     ]);
 
     // Récupérer l'article par ID
@@ -64,10 +65,13 @@ public function update(Request $request, $id)
     $article->update([
         'titre' => $request->titre,
         'categorie' => $request->categorie,
-        'prix' => $request->prix
+        'prix' => $request->prix,
+        'content' => $request->content
+
     ]);
 
     return redirect()->back()->with('success', 'Article modifié avec succès');
 }
+
 
 }

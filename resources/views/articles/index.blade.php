@@ -182,12 +182,12 @@ h1 {
             <td>
                 <!-- Bouton Modifier -->
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $article->id }}">
-                    Modifier
+                    Modifier✏️
                 </button>
 
                 <!-- Bouton Supprimer -->
                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $article->id }}">
-                    Supprimer
+                    Supprimer 🗑️
                 </button>
             </td>
         </tr>

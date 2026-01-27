@@ -14,44 +14,57 @@ class ArticleController extends Controller
 public function index()
 {
     $articles = Article::all();
-    
+  
     return view('articles.index', compact('articles'));
 }
 
 public function store(Request $request)
 {
     $request->validate([
-        'titre' => 'required|string',
-        'categorie' => 'required|string',
+        'titre' => 'required|string|max:255',
+        'categorie' => 'required|string|max:255',
         'content' => 'required|string',
-        'prix' =>'required|int',
+        'prix' => 'required|numeric'
     ]);
 
-    Article::create([
-        'titre' => $request->titre,
-        'categorie' => $request->categorie,
-        'content' => $request->content,
-        'prix' =>$request->prix
-        ]);
+    Article::Article::create($request->all());
 
-    return redirect()->back();
+    return redirect()->back()->with('success', 'Article ajouté avec succès');
 }
+    
 
 public function destroy($id)
 {
-    Article::find($id)->delete();
-    return redirect()->back();
+    // Récupérer l'article par ID
+    $article = Article::findOrFail($id);
+
+    // Suppression
+    $article->delete();
+
+    return redirect()->back()->with('success', 'Article supprimé avec succès');
 }
 
 
-public function update(Request $request)
+public function update(Request $request, $id)
 {
-    Article::where('titre',$request->titre)->update([
-                'categorie' => $request->categorie,
-                'content' => $request->content,
-                'prix' =>$request->prix
-            ]);
-    return redirect()->back();
+    // Validation simple
+    $request->validate([
+        'titre' => 'required|string|max:255',
+        'categorie' => 'required|string|max:255',
+        'prix' => 'required|numeric'
+    ]);
+
+    // Récupérer l'article par ID
+    $article = Article::findOrFail($id);
+
+    // Mise à jour
+    $article->update([
+        'titre' => $request->titre,
+        'categorie' => $request->categorie,
+        'prix' => $request->prix
+    ]);
+
+    return redirect()->back()->with('success', 'Article modifié avec succès');
 }
 
 }

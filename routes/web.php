@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
-
-Route::get('/articles', [ArticleController::class, 'index']);
-Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
-Route::delete('/articles/{id}', [ArticleController::class, 'destroy']);
-Route::post('/articles/update', [ArticleController::class, 'update']);
+Route::resource('articles', ArticleController::class);
 
 

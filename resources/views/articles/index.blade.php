@@ -119,7 +119,11 @@ h1 {
 }
 </style>
 
-<!-- Modal Ajouter Article -->
+
+
+
+<body>
+    <!-- Modal Ajouter Article -->
 <div class="modal fade" id="addArticleModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -153,27 +157,8 @@ h1 {
     </div>
   </div>
 </div>
-
-
-<body>
-
 <!-- Bouton Ajouter fixe -->
-<button 
-    class="btn btn-success rounded-circle"
-    style="
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        font-size: 30px;
-        z-index: 999;
-    "
-    data-bs-toggle="modal"
-    data-bs-target="#addArticleModal"
->
-    +
-</button>
+<button  class="btn btn-success rounded-circle" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; font-size: 30px; z-index: 999;"  data-bs-toggle="modal"  data-bs-target="#addArticleModal">+</button>
 <h1>Articles</h1>
 <table id="articlesTable" class="display">
     <thead>

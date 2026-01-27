@@ -13,11 +13,9 @@ class ArticleController extends Controller
 
 public function index()
 {
-    $articles = Article::all();
-  
+    $articles = Article::all();  
     return view('articles.index', compact('articles'));
 }
-
 public function store(Request $request)
 {
     $request->validate([
@@ -27,7 +25,12 @@ public function store(Request $request)
         'prix' => 'required|numeric'
     ]);
 
-    Article::Article::create($request->all());
+    Article::create([
+        'titre' => $request->titre,
+        'categorie' => $request->categorie,
+        'content' => $request->content,
+        'prix' => $request->prix
+    ]);
 
     return redirect()->back()->with('success', 'Article ajouté avec succès');
 }

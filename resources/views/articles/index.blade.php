@@ -123,6 +123,13 @@ h1 {
 
 
 <body>
+  <form method="POST" action="{{ route('logout') }}"  style="position: fixed; top: 30px; right: 30px; width: 60px; height: 60px; font-size: 30px; z-index: 999;" >
+    @csrf
+    <button type="submit" class="btn btn-danger">
+        Logout
+    </button>
+</form>
+
     <!-- Modal Ajouter Article -->
 <div class="modal fade" id="addArticleModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
